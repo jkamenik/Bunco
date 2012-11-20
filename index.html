@@ -12,9 +12,18 @@
     <script type="text/javascript" src="javascripts/app.js"></script>
 
     <!-- templates -->
-    <script type="text/template">
-        <div data-role="collapsible" data-collapsed="<%= collapsed %>">
-            <h3>Round <%= round_number %> (<%= player %>)</h3>
+    <script type="text/template" id="round">
+        <div data-role="collapsible" data-collapsed="<%= !active %>">
+            <%
+            var person = "";
+            if(active){
+                person = "(P"+player+"'s turn)";
+            }
+            if(complete){
+                person = "(P"+player+" wins)";
+            }
+            %>
+            <h3>Round <%= round_number %> <%= person %></h3>
             <div class="ui-grid-a">
                 <div class="ui-block-a">
                     <%= p1_score %>
@@ -38,14 +47,14 @@
     </div>
 
     <div data-role="content">
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <button data-mini=true data-icon='check'>P1</button>
-            </div>
-            <div class="ui-block-b">
-                <button data-mini=true>P2</button>
-            </div>
-        </div>
+        <!--<div id="player_buttons" class="ui-grid-a">-->
+            <!--<div class="ui-block-a">-->
+                <!--<button id="p1_button" data-mini=true data-icon='check'>P1</button>-->
+            <!--</div>-->
+            <!--<div class="ui-block-b">-->
+                <!--<button id="p2_button" data-mini=true>P2</button>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div data-role="collapsible-set" data-mini=true style="text-align: center;">
             <!-- scores go here -->
@@ -54,10 +63,10 @@
 
     <div data-role="footer" style="text-align: center;" data-position="fixed">
         <div data-role="controlgroup" data-type="horizontal">
-            <button>0 Points</button>
-            <button>1 Point</button>
-            <button>5 Points</button>
-            <button>21 Points</button>
+            <button id="points_0">0 Points</button>
+            <button id="points_1">1 Point</button>
+            <button id="points_5">5 Points</button>
+            <button id="points_21">21 Points</button>
         </div>
     </div>
 </div>
