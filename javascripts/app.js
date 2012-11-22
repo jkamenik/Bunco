@@ -44,6 +44,9 @@ var score_card = {};
     },
     addScore: function(score){
       this.activeRound().addScore(score);
+    },
+    setPlayer: function(player){
+      this.activeRound().set('player',player);
     }
   });
 
@@ -96,26 +99,4 @@ var score_card = {};
 
     score_card.rounds = rounds;
   };
-
-  // now add button bindings
-  $("#refresh").live('click',function(){
-    window.location = window.location;
-  });
-
-  $('#score_card').live('pageinit', function(event){
-    score_card.init();
-  });
-
-  $('#points_0').live('click',function(){
-    score_card.rounds.addScore(0);
-  });
-  $('#points_1').live('click',function(){
-    score_card.rounds.addScore(1);
-  });
-  $('#points_5').live('click',function(){
-    score_card.rounds.addScore(5);
-  });
-  $('#points_21').live('click',function(){
-    score_card.rounds.addScore(21);
-  });
 })(jQuery);
