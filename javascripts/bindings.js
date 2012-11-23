@@ -4,10 +4,6 @@
   });
 
   // now add button bindings
-  $("#refresh").live('click',function(){
-    window.location = window.location;
-  });
-
   $(":submit").live('click',function(){
     var score  = parseInt($(this).data('score'));
     var player = parseInt($(this).data('player'));

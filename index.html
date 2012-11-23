@@ -14,20 +14,26 @@
 
     <!-- templates -->
     <script type="text/template" id="round">
-        <div data-role="collapsible" data-collapsed="<%= !active %>">
+        <div data-role="collapsible" id="round<%=round_number%>" data-collapsed="<%= !active %>">
             <%
             var person = "";
             if(complete){
                 person = "(P"+player+" wins)";
             }
+            var p1_score_id = "p1_r"+round_number;
+            var p2_score_id = "p2_r"+round_number;
             %>
             <h3>Round <%= round_number %> <%= person %></h3>
             <div class="ui-grid-a">
                 <div class="ui-block-a">
-                    <%= p1_score %>
+                    <span id="<%= p1_score_id %>">
+                        <%= p1_score %>
+                    </span>
                 </div>
                 <div class="ui-block-b">
-                    <%= p2_score %>
+                    <span id="<%= p2_score_id %>">
+                        <%= p2_score %>
+                    </span>
                 </div>
             </div>
         </div>
@@ -39,21 +45,12 @@
 
 <div id="score_card" data-role="page">
 
-    <div data-role="header" data-position="fixed">
-        <h3>Scorecard</h3>
-        <button id="refresh" data-icon="refresh" data-iconpos="notext">Reset</button>
-    </div>
+    <!--<div data-role="header" data-position="fixed">-->
+        <!--<h3>Scorecard</h3>-->
+        <!--<button id="refresh" data-icon="refresh" data-iconpos="notext">Reset</button>-->
+    <!--</div>-->
 
     <div data-role="content">
-        <!--<div id="player_buttons" class="ui-grid-a">-->
-            <!--<div class="ui-block-a">-->
-                <!--<button id="p1_button" data-mini=true data-icon='check'>P1</button>-->
-            <!--</div>-->
-            <!--<div class="ui-block-b">-->
-                <!--<button id="p2_button" data-mini=true>P2</button>-->
-            <!--</div>-->
-        <!--</div>-->
-
         <div data-role="collapsible-set" data-mini=true style="text-align: center;">
             <!-- scores go here -->
         </div>
@@ -73,15 +70,6 @@
             </div>
         </div>
     </div>
-
-    <!--<div data-role="footer" style="text-align: center;" data-position="fixed">-->
-        <!--<div data-role="controlgroup" data-type="horizontal">-->
-            <!--<button id="points_0">0 Points</button>-->
-            <!--<button id="points_1">1 Point</button>-->
-            <!--<button id="points_5">5 Points</button>-->
-            <!--<button id="points_21">21 Points</button>-->
-        <!--</div>-->
-    <!--</div>-->
 </div>
 
 </body>

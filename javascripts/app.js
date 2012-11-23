@@ -68,6 +68,24 @@ var score_card = {};
       dom.trigger('create');
 
       return this;
+    },
+
+    findAndReplace: function(round){
+      var player   = round.get('player');
+      var complete = round.get('complete');
+      var number   = round.get('round_number');
+      var p1_score = round.get('p1_score');
+      var p2_score = round.get('p2_score');
+
+      this.$el.find("#p1_r"+number).html(p1_score);
+      this.$el.find("#p2_r"+number).html(p2_score);
+
+      if(complete){
+        this.$el.find('#round'+number+' h3 .ui-btn-text').html("Round "+number+" (P"+player+" wins)").trigger('collapse');
+        this.$el.trigger('create');
+      } else {
+        this.$el.find('#round'+number+' h3').trigger('expand');
+      }
     }
   });
 
@@ -95,7 +113,7 @@ var score_card = {};
         next.set('active',true);
       }
     });
-    rounds.on('change',function(model){view.render()});
+    rounds.on('change',function(model){view.findAndReplace(model)});
 
     score_card.rounds = rounds;
   };
